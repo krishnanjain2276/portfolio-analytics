@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+.ruff_cache/
+build/
+dist/
+
+# Generated reports (the demo tearsheet lives in docs/ for GitHub Pages)
+reports/
+
+# YOUR OWN DATA - never commit real trades, balances or contract notes
+my_data/
+private/
+*.xlsx
+!docs/*.xlsx
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

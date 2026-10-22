@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nifty-portfolio-analytics"
+version = "1.0.0"
+description = "Trade ledger, risk analytics and rule-based verdicts for a portfolio of Indian equities and NIFTY futures and options"
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [{ name = "Bhavesh" }]
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.26",
+    "pandas>=2.2",
+    "scipy>=1.11",
+    "matplotlib>=3.8",
+    "openpyxl>=3.1",
+]
+keywords = ["portfolio", "risk", "options", "nifty", "value-at-risk", "sharpe-ratio"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Office/Business :: Financial :: Investment",
+]
+
+[project.optional-dependencies]
+prices = ["yfinance"]
+dev = ["pytest>=8", "ruff>=0.5"]
+
+[project.scripts]
+portfolio-analytics = "portfolio_analytics.cli:main"
+
+[tool.setuptools]
+packages = ["portfolio_analytics"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM"]
+# N and E741: single capital letters (S, K, T, X) are the standard notation in finance maths
+ignore = ["E741", "SIM108"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["E731"]
